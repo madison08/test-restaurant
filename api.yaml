@@ -76,6 +76,15 @@ paths:
         "200":
           description: "success"
 
+  /meal:
+    get:
+      tags:
+        - "meal"
+      summary: get all meals
+      responses:
+        200:
+          description: success
+
 
 definitions:
   User:

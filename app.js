@@ -4,6 +4,7 @@ import cors from 'cors'
 import swaggerUI from 'swagger-ui-express'
 import YAML from 'yamljs'
 import userRouter from './routes/user.js'
+import mealRouter from './routes/meal.js'
 
 
 const app = express()
@@ -17,6 +18,7 @@ app.use(cors())
 
 
 app.use(`/user`, userRouter)
+app.use(`/meal`, mealRouter)
 
 
 

@@ -13,11 +13,10 @@ const mealSchema = new mongoose.Schema({
         required: true
     }
 
-
 })
 
 
 
-const User = mongoose.model('User', userSchema)
+const Meal = mongoose.model('Meal', mealSchema)
 
-export default User
+export default Meal
