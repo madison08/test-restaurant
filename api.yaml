@@ -1,0 +1,91 @@
+swagger: "2.0"
+info:
+  title: CIE-Restaurant api
+  # description: backend e-commerce api
+  version: 1.0
+  servers:
+    -url: http://localhost:3000/
+    -description: local server
+# schemes: [http,https]
+
+paths:
+#user
+  /user:
+    get:
+      tags:
+        - "user"
+      summary: get all user
+      responses:
+        200:
+          description: success
+  /user/register:
+    post:
+      tags:
+        - "user"
+      summary: add user
+      produces:
+        - application/json
+      consumes: 
+        - application/json
+      parameters:
+        - in: body
+          name: user
+          schema:
+            $ref: "#/definitions/User"
+      responses:
+        200:
+          description: ok
+  /user/{id}:
+    get:
+      tags:
+        - "user"
+      summary: signle product
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "success"
+    delete:
+      tags:
+        - "user"
+      summary: delete user
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "success"
+    put:
+      tags:
+        - "user"
+      summary: update product
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      - in: body
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        "200":
+          description: "success"
+
+
+definitions:
+  User:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+      phone: 
+        type: "string"
