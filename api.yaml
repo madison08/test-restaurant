@@ -39,7 +39,7 @@ paths:
     get:
       tags:
         - "user"
-      summary: signle product
+      summary: signle user
       parameters:
       - name: "id"
         in: "path"
@@ -63,7 +63,7 @@ paths:
     put:
       tags:
         - "user"
-      summary: update product
+      summary: update user
       parameters:
       - name: "id"
         in: "path"
@@ -84,6 +84,63 @@ paths:
       responses:
         200:
           description: success
+    /user:
+    post:
+      tags:
+        - "meal"
+      summary: add meal
+      produces:
+        - application/json
+      consumes: 
+        - application/json
+      parameters:
+        - in: body
+          name: meal
+          schema:
+            $ref: "#/definitions/Meal"
+      responses:
+        200:
+          description: ok
+  /meal/{id}:
+    get:
+      tags:
+        - "meal"
+      summary: signle meal
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "success"
+    delete:
+      tags:
+        - "meal"
+      summary: delete meal
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "success"
+    put:
+      tags:
+        - "meal"
+      summary: update meal
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      - in: body
+        schema:
+          $ref: "#/definitions/Meal"
+      responses:
+        "200":
+          description: "success"
 
 
 definitions:
@@ -97,4 +154,13 @@ definitions:
       password:
         type: "string"
       phone: 
+        type: "string"
+  Meal:
+    type: "object"
+    properties:
+      title:
+        type: "string"
+      description:
+        type: "string"
+      price:
         type: "string"
