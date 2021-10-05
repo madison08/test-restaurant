@@ -70,6 +70,7 @@ paths:
         required: true
         type: "string"
       - in: body
+        name: user
         schema:
           $ref: "#/definitions/User"
       responses:
@@ -84,7 +85,6 @@ paths:
       responses:
         200:
           description: success
-    /user:
     post:
       tags:
         - "meal"
@@ -136,8 +136,75 @@ paths:
         required: true
         type: "string"
       - in: body
+        name: meal
         schema:
           $ref: "#/definitions/Meal"
+      responses:
+        "200":
+          description: "success"
+  
+  /order:
+    get:
+      tags:
+        - "order"
+      summary: get all order
+      responses:
+        200:
+          description: success
+    post:
+      tags:
+        - "order"
+      summary: add order
+      produces:
+        - application/json
+      consumes: 
+        - application/json
+      parameters:
+        - in: body
+          name: order
+          schema:
+            $ref: "#/definitions/Order"
+      responses:
+        200:
+          description: ok
+  /order/{id}:
+    get:
+      tags:
+        - "order"
+      summary: signle order
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "success"
+    delete:
+      tags:
+        - "order"
+      summary: delete order
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "success"
+    put:
+      tags:
+        - "order"
+      summary: update order
+      parameters:
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      - in: body
+        name: order
+        schema:
+          $ref: "#/definitions/Order"
       responses:
         "200":
           description: "success"
@@ -163,4 +230,23 @@ definitions:
       description:
         type: "string"
       price:
+        type: "string"
+
+  Order:
+    type: "object"
+    properties:
+      meals:
+        type: array
+        items:
+          type: string
+          # properties:
+          #   id:
+          #     type: "string"
+      address:
+        type: "string"
+      phone:
+        type: "string"
+      status:
+        type: "string"
+      user:
         type: "string"

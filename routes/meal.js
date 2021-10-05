@@ -34,7 +34,7 @@ router.get('/:id', async (req, res) => {
         const meal = await Meal.findById(req.params.id)
 
         if(!meal){
-            return res.status(404).send('user not found')
+            return res.status(404).send('meal not found')
         }
 
         return res.send(meal)
